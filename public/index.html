@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <h1>JML Mortgage Calculator</h1>
+
+                </div>
+                <div class="col-sm-8">
+
+                    <form class="form-horizontal" @submit.prevent="runCalculation">
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Mortgage Amount</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <div class="input-group-addon">£</div>
+                                    <input type="number" class="form-control" id="inputEmail3" v-model="mortgage_amount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Mortgage Term</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Years</div>
+                                    <input type="number" class="form-control" id="inputEmail3" v-model="mortgage_term">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Interest Rate</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <div class="input-group-addon">%</div>
+                                    <input type="number" class="form-control" id="inputEmail3" v-model="rate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2">
+                                <button type="button" class="btn btn-primary" @click="toggleOverpayment">Enter monthly overpayment</button>
+                            </div>
+                        </div>
+
+                        <div class="overpayment-area" v-show="showOverpayment">
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Overpayment Amount</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">£</div>
+                                        <input type="number" class="form-control" id="inputEmail3" v-model="overpayment">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button class="btn btn-primary">Calculate</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+
+            <div class="row">
+
+                <div class="result">
+                    <h2>Key Figures</h2><p>For those spreadsheet lovers</p>
+                    <div class="col-sm-12">
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3>&pound; {{ interestSaved }}</h3>
+                                <p>Interest saved by overpaying your mortgage by &pound; {{ overpayment }} each month</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>&pound; {{ total_int }}</h3>
+                                <p>Total interest paid on a mortgage of &pound; {{ amount }} over {{ mortgage_term }} years</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>&pound; {{ monthly }}</h3>
+                                <p>Your typical mortgage payment each month</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-4 iphone">
+                                <h3><?php echo round(($total_int - $over_int) / 319) ?></h3>
+                                <p>iPhones bought with the interest saved by overpaying your mortgage</p>
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                <h3>Just <?php echo count($o[2]) ?> years</h3>
+                                <p>Is how soon you would pay off your mortgage by overpaying your mortgage by &pound;<?= $overpayment ?> each month</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="containerbox"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/app.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+</body>
+</html>
