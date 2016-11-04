@@ -14,7 +14,9 @@ new Vue({
             rate: 5,
             overpayment: 0,
             amount: 0,
+            showResults: false,
             showOverpayment: false,
+            showOverpaymentResults: false,
             result: 0,
             totalInterest: 0,
             totalInterestOverpayment: 0,
@@ -65,6 +67,14 @@ new Vue({
                 series: []
             }
         }
+
+    },
+
+    computed: {
+
+        overPaymentDurationMonths: function () {
+          return Math.ceil((this.overPaymentDuration - Math.floor(this.overPaymentDuration)) * 12);
+        },
 
     },
 
@@ -175,6 +185,8 @@ new Vue({
                 i++;
             }
 
+            this.showResults = true;
+
             this.mortgageValue = mortgage_amount;
             this.monthlyMortgage = monthly;
             this.totalInterest = total_int;
@@ -238,6 +250,9 @@ new Vue({
             this.interestSaved = parseFloat(this.totalInterest) - parseFloat(this.totalInterestOverpayment);
 
             this.iPhones = Math.floor(parseFloat(this.interestSaved) / parseFloat(379));
+
+            this.showResults = true;
+            this.showOverpaymentResults = true;
 
             self.overpaymentSeries = series;
             self.chartOpts.series.push(series);
