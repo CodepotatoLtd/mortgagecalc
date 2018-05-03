@@ -5,11 +5,11 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.0",
     "gulp": "^3.9.1",
     "laravel-elixir": "^5.0.0"
   },
   "dependencies": {
+    "bulma": "^0.7.1",
     "highcharts": "^4.2.5",
     "moment": "^2.15.2",
     "vue": "^1.0.26",

@@ -1,6 +1,8 @@
 var Vue = require('vue');
 var Highcharts = require('highcharts');
 var moment = require('moment');
+require('./fontawesome');
+require('./fa-light');
 
 new Vue({
     el: '#app',
@@ -8,11 +10,11 @@ new Vue({
     data: function() {
 
         return {
-            mortgage_amount: 100000,
+            mortgage_amount: null,
             overpaymentSeries: {},
-            mortgage_term: 25,
-            rate: 5,
-            overpayment: 0,
+            mortgage_term: null,
+            rate: null,
+            overpayment: null,
             amount: 0,
             showResults: false,
             showOverpayment: false,
@@ -33,6 +35,9 @@ new Vue({
                     marginBottom: 45,
                     zoomType: 'x'
                 },
+                credits: {
+                    enabled: false
+                },
                 title: {
                     text: '',
                     x: -20 //center
@@ -51,10 +56,10 @@ new Vue({
                     }]
                 },
                 tooltip: {
-                    //formatter: function() {
-                    //    return '<b>'+ this.series.name +'</b><br/>'+
-                    //        this.x +' day(s) in and only £'+ this.y +' left to pay';
-                    //}
+                    formatter: function() {
+                       return '<b>'+ this.series.name +'</b><br/>'+
+                           'Only £'+ number_format(this.y, 0) +' left to pay';
+                    }
                 },
                 legend: {
                     layout: 'vertical',
@@ -116,7 +121,7 @@ new Vue({
             this.chartOpts.series = [];
 
             var series = {
-                name: 'Typical Repayment',
+                name: 'Standard Mortgage',
                 data: []
             };
 
@@ -198,7 +203,7 @@ new Vue({
             var self = this;
             var monthly = parseFloat(this.result) + parseFloat(this.overpayment);
             var series = {
-                name: 'Overpaid Repayment',
+                name: 'Overpaid Mortgage',
                 data: []
             };
 
@@ -260,3 +265,28 @@ new Vue({
 
     }
 });
+
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+    // Strip all characters but numerical ones.
+    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+        };
+    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}

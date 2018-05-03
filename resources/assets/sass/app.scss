@@ -1,42 +1,5 @@
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-body{
-
-}
-
-#app{
-  margin-top:20px;
-  h1{
-    margin-top:0;
-    margin-bottom:40px;
-    padding-bottom:10px;
-    border-bottom:1px solid #ccc;
-    }
-  h2{
-    margin-top:0;
-    font-size:25px;
-    }
-  .input-group{
-    width:100%;
-    }
-  .input-group-addon{
-    width:60px;
-    }
-  .results{
-    border-top:1px solid #eee;
-    margin-top:20px;
-    padding-top:20px;
-    }
-  .results-data{
-    border:1px solid #eee;
-    .result-row{
-      padding:20px;
-      &:nth-child(even){
-        background-color:#eee;
-        }
-      p{
-        margin-bottom:0;
-        }
-      }
-    }
-  }
+@import url('https://fonts.googleapis.com/css?family=Hind');
+@import "node_modules/bulma/sass/utilities/initial-variables";
+@import "node_modules/bulma/sass/utilities/functions";
+@import "_variables.scss";
+@import "node_modules/bulma/bulma";
