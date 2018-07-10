@@ -9,6 +9,7 @@
     "laravel-elixir": "^5.0.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bulma": "^0.7.1",
     "highcharts": "^4.2.5",
     "moment": "^2.15.2",

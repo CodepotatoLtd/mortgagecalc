@@ -1,8 +1,10 @@
+require("babel-polyfill");
 var Vue = require('vue');
 var Highcharts = require('highcharts');
 var moment = require('moment');
 require('./fontawesome');
 require('./fa-light');
+
 
 new Vue({
     el: '#app',
