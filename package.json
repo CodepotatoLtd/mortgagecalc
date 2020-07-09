@@ -18,7 +18,7 @@
     "babel-polyfill": "^6.26.0",
     "bulma": "^0.9.0",
     "cross-env": "^7.0.2",
-    "highcharts": "^4.2.5",
+    "highcharts": "^6.1.0",
     "moment": "^2.27.0",
     "vue": "^1.0.26",
     "vue-router": "^0.7.13"
