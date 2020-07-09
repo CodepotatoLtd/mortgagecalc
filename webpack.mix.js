@@ -1,4 +1,6 @@
 let mix = require('laravel-mix');
+require('laravel-mix-purgecss');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -11,4 +13,6 @@ let mix = require('laravel-mix');
  */
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
-    .js('resources/assets/js/app.js', 'public/js');
+    .copy('resources/views/index.html', 'public')
+    .js('resources/assets/js/app.js', 'public/js')
+    .purgeCss();
