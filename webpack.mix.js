@@ -12,7 +12,9 @@ require('laravel-mix-purgecss');
  |
  */
 
-mix.sass('resources/assets/sass/app.scss', 'public/css')
+mix
+    mix.postCss('./resources/assets/css/app.css', './public/css', [
+        require('tailwindcss'),
+    ])
     .copy('resources/views/index.html', 'public')
-    .js('resources/assets/js/app.js', 'public/js')
-    .purgeCss();
+    .js('resources/assets/js/app.js', 'public/js');

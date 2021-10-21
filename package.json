@@ -7,19 +7,20 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "laravel-mix": "^5.0.4",
-    "laravel-mix-purgecss": "^5.0.0",
-    "resolve-url-loader": "^3.1.0",
-    "sass": "^1.26.10",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "autoprefixer": "^9.8.8",
+    "laravel-mix": "^5.0.9",
+    "postcss": "^7.0.39",
+    "resolve-url-loader": "^3.1.4",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "vue-template-compiler": "^2.6.14"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "bulma": "^0.9.0",
-    "cross-env": "^7.0.2",
-    "highcharts": ">=6.1.0",
-    "moment": "^2.27.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "cross-env": "^7.0.3",
+    "highcharts": "^9.2.2",
+    "laravel-mix-purgecss": "^6.0.0",
+    "moment": "^2.29.1",
+    "postcss-import": "^14.0.2",
     "vue": "^1.0.26",
     "vue-router": "^0.7.13"
   }

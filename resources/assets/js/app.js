@@ -1,4 +1,3 @@
-require("babel-polyfill");
 var Vue = require('vue');
 var Highcharts = require('highcharts');
 var moment = require('moment');
